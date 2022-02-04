@@ -3,7 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { APIResponse, Demo } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
-
+import { ControllerService } from '../../controller.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,37 +15,119 @@ export class HomeComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
   private gameSub: Subscription;
 
+  subscription: any;
+ 
+  demo1: Demo ={
+
+    name: "GCP Resource Visualizer",
+    website: "string",
+    description: "string",
+    brief_desc: "Display your whole GCP infrastructure with Neo4J",
+    parent_platforms: [],
+    publishers:[],
+    screenshots: [],
+    partners:"neo4j",
+    solution_pillar: "Infrastructure Modernization",
+   }
+
+   demo2: Demo ={
+
+    name: "Investment Recommendation",
+    website: "string",
+    description: "string",
+    brief_desc: "Data processing pipelines that generate synthetic investor risk",
+    parent_platforms: [],
+    publishers:[],
+    screenshots: [],
+    partners:"softserve",
+    solution_pillar: "Smart Analytics",
+   }
+
+   demo3: Demo ={
+
+    name: "Demo 3",
+    website: "string",
+    description: "string",
+    brief_desc: "Data processing pipelines that generate synthetic investor risk",
+    parent_platforms: [],
+    publishers:[],
+    screenshots: [],
+    partners:"demo",
+    solution_pillar: "Data Management",
+   }
+
+   demo4: Demo ={
+
+    name: "Demo 4",
+    website: "string",
+    description: "string",
+    brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    parent_platforms: [],
+    publishers:[],
+    screenshots: [],
+    partners:"demo",
+    solution_pillar: "Smart Analytics",
+   }
+
+   demo5: Demo ={
+  
+    name: "Demo 5",
+    website: "string",
+    description: "string",
+    brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    parent_platforms: [],
+    publishers:[],
+    screenshots: [],
+    partners:"demo",
+    solution_pillar: "Artificial Intelligence",
+   }
+
+   demo6: Demo ={
+
+    name: "Demo 6",
+    website: "string",
+    description: "string",
+    brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    parent_platforms: [],
+    publishers:[],
+    screenshots: [],
+    partners:"demo",
+    solution_pillar: "Security",
+   }
+
+   demo7: Demo ={
+
+    name: "Demo 7",
+    website: "string",
+    description: "string",
+    brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    parent_platforms: [],
+    publishers:[],
+    screenshots: [],
+    partners:"demo",
+    solution_pillar: "Productivity & Collaboration",
+   }
+
+   demo8: Demo ={
+
+    name: "Demo 8",
+    website: "string",
+    description: "string",
+    brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    parent_platforms: [],
+    publishers:[],
+    screenshots: [],
+    partners:"demo",
+    solution_pillar: "Smart Analytics",
+   }
+   
+   demoDB: Demo[] = [this.demo1,this.demo2,this.demo3,this.demo4,this.demo5,this.demo6,this.demo7,this.demo8];
+
+
   constructor(    
     private httpService: HttpService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
-
- 
-    demo1: Demo ={
-      background_image: "https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
-      name: "GCP Resource Visualizer",
-      website: "string",
-      description: "string",
-      brief_desc: "Display your whole GCP infrastructure with Neo4J",
-      parent_platforms: [],
-      publishers:[],
-      screenshots: [],
-      partners:"neo4j"
-     }
-
-     demo2: Demo ={
-      background_image: "https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
-      name: "Investment Recommendation",
-      website: "string",
-      description: "string",
-      brief_desc: "Data processing pipelines that generate synthetic investor risk",
-      parent_platforms: [],
-      publishers:[],
-      screenshots: [],
-      partners:"softserve"
-     }
-     
-      gameArray: Demo[] = [this.demo1,this.demo2];
+    private activatedRoute: ActivatedRoute, private conService:ControllerService) { }
 
    
 
@@ -55,9 +137,23 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.searchGames('metacrit', params['game-search']);
       } else {
         //this.searchGames('metacrit');
-        this.games = this.gameArray;
+        this.games = this.demoDB;
       }
     });
+
+    this.subscription = this.conService.getNavChangeEmitter()
+    .subscribe(item => this.selectBySolution(item));
+  }
+
+  selectBySolution(solution: string): void {
+    console.log("selecting sol:" + solution);
+    var temp = []
+    for (var demo of this.demoDB) {
+      if(demo.solution_pillar==solution || solution=="All")
+        temp.push(demo);
+    }
+
+    this.games = temp;
   }
 
   searchGames(sort: string, search?: string): void {

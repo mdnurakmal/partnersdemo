@@ -1,5 +1,5 @@
 export interface Demo {
-    background_image: string;
+
     name: string;
     partners: string;
     website: string;
@@ -8,7 +8,7 @@ export interface Demo {
     publishers: Array<Publishers>;
     brief_desc : string;
     screenshots: Array<Screenshots>;
-
+    solution_pillar: string;
   }
   
   export interface APIResponse<T> {
