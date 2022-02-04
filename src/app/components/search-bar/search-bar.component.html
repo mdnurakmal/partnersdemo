@@ -1,0 +1,15 @@
+<div class="search-container">
+  <img routerLink="/"src="/assets/images/Demo Factory.png" class="search-logo">
+  
+    <form class="search-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+      <input
+        class="search-input"
+        name="search"
+        ngModel
+        placeholder="Search 100+ partner demos"
+      />
+      <button class="search-button"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+  
