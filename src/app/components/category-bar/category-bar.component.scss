@@ -8,7 +8,9 @@
 
     width: 65%;
     text-align: center;
-    max-height: 80px;
+ 
+    min-height: 100px;
+    overflow: hidden;
 
     &-categoryBtn{
  

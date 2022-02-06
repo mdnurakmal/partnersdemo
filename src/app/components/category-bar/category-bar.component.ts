@@ -8,7 +8,7 @@ import { ControllerService } from '../../controller.service';
 export class CategoryBarComponent implements OnInit {
   @Output() myEvent = new EventEmitter();
   filter(e){
-    this.conService.emitNavChangeEvent(e);
+    this.conService.emitSolutionPillarFilter(e);
   }
   
   constructor(private conService: ControllerService) {
