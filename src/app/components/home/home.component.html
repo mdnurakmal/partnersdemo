@@ -1,7 +1,8 @@
 
+  <app-category-bar></app-category-bar>
   <div class="games">  
-    <ng-container *ngFor="let game of games">
-      <div class="game" (click)="openGameDetails(game.id)">
+    <ng-container *ngFor="let game of games; let i = index" >
+      <div class="game" (click)="openGameDetails(i)" [@inOutAnimation]>
         <div class="game-thumb-container">
           <img
            *ngIf="game.partners"

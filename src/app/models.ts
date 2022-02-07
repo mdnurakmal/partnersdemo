@@ -9,6 +9,8 @@ export interface Demo {
     brief_desc : string;
     screenshots: Array<Screenshots>;
     solution_pillar: string;
+    liveDemo: string;
+    deployDemo: string;
   }
   
   export interface APIResponse<T> {

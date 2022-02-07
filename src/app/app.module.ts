@@ -19,16 +19,16 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
 import { DetailsComponent } from './components/details/details.component';
-import { GameTabsComponent } from './components/game-tabs/game-tabs.component';
-import { CategoryBarComponent } from './components/category-bar/category-bar.component';
 
+import { CategoryBarComponent } from './components/category-bar/category-bar.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     HomeComponent,
     DetailsComponent,
-    GameTabsComponent,
+
     CategoryBarComponent
   ],
   imports: [
@@ -42,6 +42,7 @@ import { CategoryBarComponent } from './components/category-bar/category-bar.com
     MatSelectModule,
     MatTabsModule,
     MatIconModule,
+    MatGridListModule, 
   ],
   providers: [
     {

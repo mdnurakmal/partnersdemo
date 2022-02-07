@@ -1,148 +1,180 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { APIResponse, Demo } from 'src/app/models';
-import { HttpService } from 'src/app/services/http.service';
+import { Demo } from 'src/app/models';
+
 import { ControllerService } from '../../controller.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger("inOutAnimation", [
+      state("in", style({ opacity: 1 })),
+      transition(":enter", [
+        animate(
+          300,
+          keyframes([
+            style({ opacity: 0, offset: 0 }),
+            style({ opacity: 0.25, offset: 0.25 }),
+            style({ opacity: 0.5, offset: 0.5 }),
+            style({ opacity: 0.75, offset: 0.75 }),
+            style({ opacity: 1, offset: 1 }),
+          ])
+        )
+      ]),
+ 
+    ])
+  ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   public sort: string;
   public games: Array<Demo>;
   private routeSub: Subscription;
-  private gameSub: Subscription;
-
   subscription: any;
- 
+
   demo1: Demo ={
 
     name: "GCP Resource Visualizer",
     website: "string",
-    description: "string",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brief_desc: "Display your whole GCP infrastructure with Neo4J",
     parent_platforms: [],
     publishers:[],
     screenshots: [],
     partners:"neo4j",
     solution_pillar: "Infrastructure Modernization",
+    liveDemo: "https://ui-m5hyfr2bqa-ey.a.run.app",
+    deployDemo:"https://www.lipsum.com/"
    }
 
    demo2: Demo ={
 
     name: "Investment Recommendation",
     website: "string",
-    description: "string",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brief_desc: "Data processing pipelines that generate synthetic investor risk",
     parent_platforms: [],
     publishers:[],
     screenshots: [],
     partners:"softserve",
     solution_pillar: "Smart Analytics",
+    liveDemo: "https://ui-m5hyfr2bqa-ey.a.run.app",
+    deployDemo:"https://www.lipsum.com/"
    }
 
    demo3: Demo ={
 
     name: "Demo 3",
     website: "string",
-    description: "string",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brief_desc: "Data processing pipelines that generate synthetic investor risk",
     parent_platforms: [],
     publishers:[],
     screenshots: [],
     partners:"demo",
     solution_pillar: "Data Management",
+    liveDemo: "https://www.lipsum.com/",
+    deployDemo:"https://www.lipsum.com/"
    }
 
    demo4: Demo ={
 
     name: "Demo 4",
     website: "string",
-    description: "string",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     parent_platforms: [],
     publishers:[],
     screenshots: [],
     partners:"demo",
     solution_pillar: "Smart Analytics",
+    liveDemo: "https://www.lipsum.com/",
+    deployDemo:"https://www.lipsum.com/"
    }
 
    demo5: Demo ={
   
     name: "Demo 5",
     website: "string",
-    description: "string",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     parent_platforms: [],
     publishers:[],
     screenshots: [],
     partners:"demo",
     solution_pillar: "Artificial Intelligence",
+    liveDemo: "https://www.lipsum.com/",
+    deployDemo:"https://www.lipsum.com/"
    }
 
    demo6: Demo ={
 
     name: "Demo 6",
     website: "string",
-    description: "string",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     parent_platforms: [],
     publishers:[],
     screenshots: [],
     partners:"demo",
     solution_pillar: "Security",
+    liveDemo: "https://www.lipsum.com/",
+    deployDemo:"https://www.lipsum.com/"
    }
 
    demo7: Demo ={
 
     name: "Demo 7",
     website: "string",
-    description: "string",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     parent_platforms: [],
     publishers:[],
     screenshots: [],
     partners:"demo",
     solution_pillar: "Productivity & Collaboration",
+    liveDemo: "https://www.lipsum.com/",
+    deployDemo:"https://www.lipsum.com/"
    }
 
    demo8: Demo ={
 
     name: "Demo 8",
     website: "string",
-    description: "string",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     parent_platforms: [],
     publishers:[],
     screenshots: [],
     partners:"demo",
     solution_pillar: "Smart Analytics",
+    liveDemo: "https://www.lipsum.com/",
+    deployDemo:"https://www.lipsum.com/"
    }
    
    demoDB: Demo[] = [this.demo1,this.demo2,this.demo3,this.demo4,this.demo5,this.demo6,this.demo7,this.demo8];
 
 
   constructor(    
-    private httpService: HttpService,
+
     private router: Router,
     private activatedRoute: ActivatedRoute, private conService:ControllerService) { }
 
-   
 
   ngOnInit(): void {
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
-      if (params['game-search']) {
-        this.searchGames('metacrit', params['game-search']);
-      } else {
+
         //this.searchGames('metacrit');
         this.games = this.demoDB;
-      }
+      
     });
 
-    this.subscription = this.conService.getNavChangeEmitter()
+    this.subscription = this.conService.getemitSolutionPillarFilter()
     .subscribe(item => this.selectBySolution(item));
+
+
   }
 
   selectBySolution(solution: string): void {
@@ -156,27 +188,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.games = temp;
   }
 
-  searchGames(sort: string, search?: string): void {
-    this.gameSub = this.httpService
-      .getGameList(sort, search)
-      .subscribe((gameList: APIResponse<Demo>) => {
-        this.games = gameList.results;
-        console.log(gameList);
-      });
-  }
+  openGameDetails(id: Number): void {
 
-  openGameDetails(id: string): void {
+
+    console.log("open details" + id);
     this.router.navigate(['details', id]);
   }
 
   ngOnDestroy(): void {
-    if (this.gameSub) {
-      this.gameSub.unsubscribe();
-    }
 
+    console.log("ngondestry");
     if (this.routeSub) {
       this.routeSub.unsubscribe();
     }
+
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+
+    this.conService.emitDemosDb(this.games);
   }
 
 }
