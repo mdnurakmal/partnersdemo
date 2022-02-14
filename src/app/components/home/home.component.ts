@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     screenshots: [],
     partners:"neo4j",
     solution_pillar: "Infrastructure Modernization",
-    liveDemo: "https://ui-m5hyfr2bqa-ey.a.run.app",
+    liveDemo: "https://neo4j-gcp-viz-7lepbsinfa-uc.a.run.app/",
     deployDemo:"https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/mdnurakmal/neo4j-gcp-viz.git&cloudshell_image=gcr.io/cloudrun/button&shellonly=true"
    }
 
