@@ -60,8 +60,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     screenshots: [],
     partners:"softserve",
     solution_pillar: "Smart Analytics",
-    liveDemo: "https://ui-m5hyfr2bqa-ey.a.run.app",
-    deployDemo:"https://www.lipsum.com/"
+    liveDemo: "https://ui-b3lhcxttdq-ey.a.run.app/",
+    deployDemo:"https://ui-b3lhcxttdq-ey.a.run.app/"
    }
 
    demo3: Demo ={
