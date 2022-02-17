@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     name: "Stream real time data with kafka",
     website: "string",
-    description: "Track your vehicle in real time with Kafka. Our app offers a phenomenal level of detail, but it also has some great features like geo-fencing and lost car detection.",
+    description: "Track your vehicle in real time with Kafka. Our app offers a phenomenal level of detail, but it also has some great features like geo-fencing and lost car detection. View live kafka cluster: http://34.125.115.64:8080/",
     brief_desc: "Track your vehicle in real time with Kafka.",
     parent_platforms: [],
     publishers:[],
