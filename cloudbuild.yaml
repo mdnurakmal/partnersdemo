@@ -1,0 +1,28 @@
+#Before running this cloudbuild.yaml, remember to first create a repository in artifact registry named "demofactory"
+
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image:v1', '.' ]
+
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'push', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image:v1']
+
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - 'run'
+  - 'deploy'
+  - 'cloudrunservice'
+  - '--image'
+  - 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image:v1'
+  - '--region'
+  - 'asia-southeast1'
+  - '--platform'
+  - 'managed'
+  - '--allow-unauthenticated'
+  - '--port'
+  - '80'
+
+images:
+- 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image:v1'
