@@ -66,17 +66,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
    demo3: Demo ={
 
-    name: "Demo 3",
+    name: "Stream real time data with kafka",
     website: "string",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    brief_desc: "Data processing pipelines that generate synthetic investor risk",
+    description: "Track your vehicle in real time with Kafka. Our app offers a phenomenal level of detail, but it also has some great features like geo-fencing and lost car detection.",
+    brief_desc: "Track your vehicle in real time with Kafka.",
     parent_platforms: [],
     publishers:[],
     screenshots: [],
-    partners:"demo",
+    partners:"confluent",
     solution_pillar: "Data Management",
-    liveDemo: "https://www.lipsum.com/",
-    deployDemo:"https://www.lipsum.com/"
+    liveDemo: "http://34.125.115.64:5000/",
+    deployDemo:"http://34.125.115.64:5000/"
    }
 
    demo4: Demo ={
