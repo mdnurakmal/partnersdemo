@@ -1,21 +1,50 @@
-#Before running this cloudbuild.yaml, remember to first create a repository in artifact registry named "demofactory"
+
+# Before running this cloudbuild.yaml, check that you
+
+# 0. Create env variables
+# PROJECT_ID=$(gcloud config list --format='value(core.project)')
+# PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
+
+# 1.Enable Cloud run (search google by typing cloud run REST API)
+# 2.Enable Cloud Artifacts(search google by typing cloud artifacts REST API)
+# 3.Enable cloudbuild (search google by typing cloud build REST API)
+# gcloud services enable run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com --project $PROJECT_ID
+
+# 4.Give IAM access to cloudbuild service account (Service account user, Cloud Run Admin)
+
+# gcloud projects add-iam-policy-binding $PROJECT_ID \
+#     --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
+#     --role=roles/run.admin
+
+# gcloud projects add-iam-policy-binding $PROJECT_ID \
+#     --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
+#     --role=roles/iam.serviceAccountUser
+
+
+# 5.Create a repository named demofactory
+# ARTIFACT_REPO=name_your repo
+# LOCATION=choose your location for cloud build, artifact repo and cloud run to be deployed
+# gcloud artifacts repositories create $ARTIFACT_REPO --repository-format=docker \
+#     --location=$LOCATION --description="Docker repository"
+
+
 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image:v1', '.' ]
+  args: [ 'build', '-t', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image', '.' ]
 
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'push', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image:v1']
+  args: [ 'push', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image']
 
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
   - 'run'
   - 'deploy'
-  - 'cloudrunservice'
+  - 'demofactory'
   - '--image'
-  - 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image:v1'
+  - 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image'
   - '--region'
   - 'asia-southeast1'
   - '--platform'
@@ -25,4 +54,4 @@ steps:
   - '80'
 
 images:
-- 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image:v1'
+- 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image'
