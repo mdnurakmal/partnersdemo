@@ -1,7 +1,7 @@
 FROM node:16 as first_image
 WORKDIR /app
 COPY ["package.json","package-lock.json","./"]
-RUN npm -g install npm@latest
+RUN npm install -g npm@7.5.6
 RUN npm install
 RUN npm install -g @angular/cli
 COPY . .

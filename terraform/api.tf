@@ -28,3 +28,9 @@ resource "google_project_service" "logging" {
   disable_on_destroy = true
   disable_dependent_services = true
 }
+
+resource "google_project_service" "artifact" {
+  service = "artifactregistry.googleapis.com"
+  disable_on_destroy = true
+  disable_dependent_services = true
+}
