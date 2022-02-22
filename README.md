@@ -1,6 +1,15 @@
 # Partners Demo
 
 ## Instructions
+
+[![Run on Google
+Cloud](https://deploy.cloud.run/button.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/mdnurakmal/partnersdemo.git&cloudshell_image=gcr.io/cloudrun/button&shellonly=true)
+
+```
+sudo sh run.sh
+```
+
+
 Install NodeJS
 
 Install angular

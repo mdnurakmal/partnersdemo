@@ -1,0 +1,37 @@
+{ 
+    
+    "build": {
+        "skip": true
+        },
+    "hooks": {
+        "prebuild": {
+            "commands": [
+                "echo $PWD",
+                "$(sudo curl -fsSLO https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh)",
+                "sudo chmod +x ./install.sh",
+                "sudo ./install.sh",
+
+                "tfswitch -u -b $HOME/bin",
+               
+
+                "gcloud config set project $GOOGLE_CLOUD_PROJECT",
+                "gcloud config set run/region $GOOGLE_CLOUD_REGION",
+                "sudo usermod -a -G docker ${USER}",
+                "gcloud services enable compute.googleapis.com",
+                "gcloud services enable cloudasset.googleapis.com",
+                "gcloud services enable container.googleapis.com",
+          
+                "sudo chmod +x ./create_bucket.sh",
+                "sudo ./create_bucket.sh $GOOGLE_CLOUD_PROJECT",
+
+                "sed -i 's/<PLACEHOLDER_BUCKET>/'$GOOGLE_CLOUD_PROJECT'-partnersdemo/g' ./terraform/main.tf",
+                "sed -i 's/<PLACEHOLDER_PROJECTID>/'$GOOGLE_CLOUD_PROJECT'/g' ./terraform/main.tf",
+               
+                "sudo chmod +x ./prep_terraform.sh",
+                "./prep_terraform.sh $GOOGLE_CLOUD_PROJECT $GOOGLE_CLOUD_REGION"
+
+            ]
+        }
+   
+    }
+}
