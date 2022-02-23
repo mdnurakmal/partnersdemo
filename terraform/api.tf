@@ -34,3 +34,10 @@ resource "google_project_service" "artifact" {
   disable_on_destroy = true
   disable_dependent_services = true
 }
+
+
+resource "google_project_service" "cloudresourcemanager" {
+  service = "cloudresourcemanager.googleapis.com"
+  disable_on_destroy = true
+  disable_dependent_services = true
+}
