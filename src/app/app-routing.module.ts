@@ -9,16 +9,15 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'search/:game-search',
     component: HomeComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'details/:id',
     component: DetailsComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'login',
