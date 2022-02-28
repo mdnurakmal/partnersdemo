@@ -28,7 +28,7 @@
 #     --location=$LOCATION --description="Docker repository"
 
 steps:
-- name: gcr.io/google-containers/alpine-with-bash:1.0
+- name: 'gcr.io/google-containers/alpine-with-bash:1.0'
   args: [ 'sed', '-i', 's/<SECRET_CLIENT_ID>/'$$CLIENTID'/g', './src/enviroments/environment.prod.ts' ]
   secretEnv: ['CLIENTID']
 availableSecrets:
