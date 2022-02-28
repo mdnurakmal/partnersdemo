@@ -68,3 +68,6 @@ availableSecrets:
   secretManager:
   - versionName: projects/partnersdemo/secrets/clientId/versions/1
     env: 'CLIENTID'
+
+options:
+  logStreamingOption: STREAM_ON
