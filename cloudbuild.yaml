@@ -37,7 +37,6 @@ steps:
   - -i
   - s/<SECRET_CLIENT_ID>/'$$CLIENTID'/g
   - ./src/enviroments/environment.prod.ts
-
   secretEnv: ['CLIENTID']
 availableSecrets:
   secretManager:
