@@ -33,7 +33,7 @@ steps:
   args:
   - 'sed'
   - '-i'
-  - 's/<SECRET_CLIENT_ID>/'$$CLIENTID'/g'
+  - 's/<SECRET_CLIENT_ID>/$CLIENTID/g'
   - './src/enviroments/environment.prod.ts'
 
   secretEnv: ['CLIENTID']
