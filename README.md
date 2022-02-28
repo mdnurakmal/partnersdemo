@@ -21,3 +21,8 @@ https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-
 npm install
 ng build 
 sudo cp -r $HOME/partnersdemo/dist/. /var/www/html
+
+
+# Build and Push docker
+docker build -t gcr.io/partnersdemo/web .
+docker push gcr.io/partnersdemo/web
