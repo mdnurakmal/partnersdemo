@@ -10,4 +10,4 @@ ENV PORT 80
 
 COPY --from=first_image /app/dist /usr/share/nginx/html
 
-
+CMD ["nginx", "-g", "daemon off;"]
