@@ -13,11 +13,14 @@ export class AppComponent  implements OnInit {
   constructor(private authService: AuthService) {
 this.isAuthenticated = false;
 console.log("Auth false");
+this.loginWithRedirect();
 }
 
   loginWithRedirect() {
     // Call this to redirect the user to the login page
-    this.authService.loginWithRedirect();
+    this.authService.loginWithRedirect({
+      appState: { target: '/' }
+    })
   }
 
   ngOnInit(): void {
