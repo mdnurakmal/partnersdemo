@@ -6,7 +6,7 @@ export const environment = {
   BASE_URL: 'https://rawg-video-games-database.p.rapidapi.com',
   auth0: {
     domain: 'dev-oriqm2km.us.auth0.com',
-    clientId: <SECRET_CLIENT_ID>,
+    clientId: '<SECRET_CLIENT_ID>',
     redirectUri: 'https://gcpdemos.dev',
   }
 };
