@@ -29,12 +29,13 @@
 
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
   args:
   - 'sed'
   - '-i'
   - 's/<SECRET_CLIENT_ID>/'$$CLIENTID'/g'
   - './src/enviroments/environment.prod.ts'
-  
+
   secretEnv: ['CLIENTID']
 availableSecrets:
   secretManager:
