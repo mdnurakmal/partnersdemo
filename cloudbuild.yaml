@@ -45,7 +45,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'push', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image']
 
- id: "Deploy container image to cloud run"
+  id: "Deploy container image to cloud run"
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
   - 'run'
