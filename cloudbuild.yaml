@@ -36,10 +36,6 @@ steps:
   - |
     sed -i 's/<SECRET_CLIENT_ID>/'$$CLIENTID'/g' ./src/enviroments/environment.prod.ts
   secretEnv: ['CLIENTID']
-availableSecrets:
-  secretManager:
-  - versionName: projects/partnersdemo/secrets/clientId/versions/1
-    env: CLIENTID
 
 - id: "Build docker image"
 - name: 'gcr.io/cloud-builders/docker'
@@ -68,4 +64,7 @@ availableSecrets:
 images:
 - 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image'
 
-
+availableSecrets:
+  secretManager:
+  - versionName: projects/partnersdemo/secrets/clientId/versions/1
+    env: 'CLIENTID'
