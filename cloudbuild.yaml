@@ -42,7 +42,7 @@ steps:
 availableSecrets:
   secretManager:
   - versionName: projects/partnersdemo/secrets/clientId/versions/1
-    env: 'CLIENTID'
+    env: CLIENTID
 
 - id: "Build docker image"
 - name: 'gcr.io/cloud-builders/docker'
