@@ -10,11 +10,15 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class AppComponent  implements OnInit {
   isAuthenticated: boolean;
-  constructor(@Inject(DOCUMENT) private document: Document,
-  private authService: AuthService) {
+  constructor(private authService: AuthService) {
 this.isAuthenticated = false;
 console.log("Auth false");
 }
+
+  loginWithRedirect() {
+    // Call this to redirect the user to the login page
+    this.authService.loginWithRedirect();
+  }
 
   ngOnInit(): void {
     this.authService.isAuthenticated$.subscribe((success: boolean) => {
