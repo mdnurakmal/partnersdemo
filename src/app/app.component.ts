@@ -13,7 +13,7 @@ export class AppComponent  implements OnInit {
   constructor(private authService: AuthService) {
 this.isAuthenticated = false;
 console.log("Auth false");
-this.loginWithRedirect();
+
 }
 
   loginWithRedirect() {
