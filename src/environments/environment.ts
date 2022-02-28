@@ -1,10 +1,14 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
 export const environment = {
   production: false,
-  BASE_URL: 'https://rawg-video-games-database.p.rapidapi.com'
+  BASE_URL: 'https://rawg-video-games-database.p.rapidapi.com',
+  auth0: {
+    domain: 'dev-oriqm2km.us.auth0.com',
+    clientId: <SECRET_CLIENT_ID>,
+    redirectUri: 'https://gcpdemos.dev',
+  }
 };
 
 /*
