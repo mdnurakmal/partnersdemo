@@ -35,6 +35,8 @@ steps:
   - '-c'
   - |
     sed -i 's/<SECRET_CLIENT_ID>/'$$CLIENTID'/g' ./src/environments/environment.prod.ts
+    sed -i 's/<SECRET_CLIENT_ID>/'$$CLIENTID'/g' ./src/environments/environment.ts
+    cat ./src/environments/environment.ts
   secretEnv: ['CLIENTID']
 
 - id: "Build docker image"
