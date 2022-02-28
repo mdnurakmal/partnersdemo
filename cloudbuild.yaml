@@ -27,8 +27,6 @@
 # gcloud artifacts repositories create $ARTIFACT_REPO --repository-format=docker \
 #     --location=$LOCATION --description="Docker repository"
 
-sed -i 's/<PLACEHOLDER_BUCKET>/'$1'-neo4j-viz/g' ./terraform/main.tf
-
 steps:
 - name: gcr.io/google-containers/alpine-with-bash:1.0
   args: [ 'sed', '-i', 's/<PLACEHOLDER_BUCKET>/'$$CLIENTID'/g', './src/enviroments/environment.prod.ts' ]
@@ -53,7 +51,7 @@ availableSecrets:
   - '--image'
   - 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image'
   - '--region'
-  - 'us-central1'
+  - 'asia-southeast1'
   - '--platform'
   - 'managed'
   - '--allow-unauthenticated'
