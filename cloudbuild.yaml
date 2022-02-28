@@ -70,4 +70,4 @@ availableSecrets:
     env: 'CLIENTID'
 
 options:
-  logStreamingOption: STREAM_ON
+  logStreamingOption: CLOUD_LOGGING_ONLY
