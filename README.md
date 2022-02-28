@@ -22,7 +22,12 @@ npm install
 ng build 
 sudo cp -r $HOME/partnersdemo/dist/. /var/www/html
 
+# Store Credentials in secret manager
+# Create Service account for cloud build
+
 
 # Build and Push docker
 docker build -t gcr.io/partnersdemo/web .
 docker push gcr.io/partnersdemo/web
+
+gcloud run deploy demofactory --image gcr.io/partnersdemo/web --region us-central1 --platform managed --allow-unauthenticated --port 80

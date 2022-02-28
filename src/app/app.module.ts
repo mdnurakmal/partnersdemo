@@ -14,7 +14,6 @@ import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
 import { DetailsComponent } from './components/details/details.component';
 import { CategoryBarComponent } from './components/category-bar/category-bar.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
-import { LoginComponent } from './components/login/login.component';
 import { CustomMaterialModule } from './core/custom-material-module.module';
 import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
@@ -25,7 +24,6 @@ import { environment } from 'src/environments/environment';
     HomeComponent,
     DetailsComponent,
     CategoryBarComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
