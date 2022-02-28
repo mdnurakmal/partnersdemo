@@ -13,10 +13,13 @@ export class AppComponent  implements OnInit {
   constructor(@Inject(DOCUMENT) private document: Document,
   private authService: AuthService) {
 this.isAuthenticated = false;
+console.log("Auth false");
 }
+
   ngOnInit(): void {
     this.authService.isAuthenticated$.subscribe((success: boolean) => {
       this.isAuthenticated = success;
+      console.log("Auth sucess");
     });
   }
 
