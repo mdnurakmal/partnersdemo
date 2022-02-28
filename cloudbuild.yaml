@@ -28,10 +28,11 @@
 #     --location=$LOCATION --description="Docker repository"
 
 steps:
+- id: "Replace credentials from secret manager"
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args:
-  - -c
+  - '-c'
   - sed
   - -i
   - s/<SECRET_CLIENT_ID>/'$$CLIENTID'/g
@@ -43,13 +44,15 @@ availableSecrets:
   - versionName: projects/partnersdemo/secrets/clientId/versions/1
     env: 'CLIENTID'
 
+- id: "Build docker image"
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image', '.' ]
 
-
+- id: "Push docker image"
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'push', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/demofactory/demofactory-image']
 
+ id: "Deploy container image to cloud run"
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
   - 'run'
