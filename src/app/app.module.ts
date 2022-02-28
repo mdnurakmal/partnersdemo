@@ -3,46 +3,41 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { GaugeModule } from 'angular-gauge';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-
 import { AppComponent } from './app.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { HomeComponent } from './components/home/home.component';
-
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
 import { DetailsComponent } from './components/details/details.component';
-
 import { CategoryBarComponent } from './components/category-bar/category-bar.component';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { LoginComponent } from './components/login/login.component';
+import { CustomMaterialModule } from './core/custom-material-module.module';
+import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     HomeComponent,
     DetailsComponent,
-
-    CategoryBarComponent
+    CategoryBarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     GaugeModule.forRoot(),
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatTabsModule,
-    MatIconModule,
-    MatGridListModule, 
+    SocialLoginModule,
+    CustomMaterialModule,
+    AuthModule.forRoot(environment.auth0)
   ],
   providers: [
     {
@@ -55,6 +50,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
       useClass: HttpErrorsInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent],
 })
