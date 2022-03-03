@@ -1,32 +1,32 @@
-
-  <app-category-bar></app-category-bar>
-  <div class="games">  
-    <ng-container *ngFor="let game of games; let i = index" >
-      <div class="game" (click)="openGameDetails(i)" [@inOutAnimation]>
-        <div class="game-thumb-container">
-          <img
-           *ngIf="game.partners"
-            src="assets/images/partners/{{ game.partners }}_hero.png"
-            alt="thumbnail"
-            class="game-thumbnail"
-          />
+<app-search-bar></app-search-bar>
+<app-category-bar></app-category-bar>
+<div class="games">
+  <ng-container *ngFor="let game of games; let i = index">
+    <div class="game" (click)="openGameDetails(i)" [@inOutAnimation]>
+      <div class="game-thumb-container">
+        <img
+          *ngIf="game.partners"
+          src="assets/images/partners/{{ game.partners }}_hero.png"
+          alt="thumbnail"
+          class="game-thumbnail"
+        />
         <p *ngIf="!game.background_image">No image</p>
-        </div>
-        <div class="game-description">
-          <p class="game-name">{{ game.name }}</p>
-          <p class="game-desc">{{ game.brief_desc }}</p>
-          <div class="game-platforms">
-            <img       
-              class="game-platform"
-              src="assets/images/partners/{{ game.partners }}.png"
-            />
-          </div>
+      </div>
+      <div class="game-description">
+        <p class="game-name">{{ game.name }}</p>
+        <p class="game-desc">{{ game.brief_desc }}</p>
+        <div class="game-platforms">
+          <img
+            class="game-platform"
+            src="assets/images/partners/{{ game.partners }}.png"
+          />
         </div>
       </div>
-    </ng-container> 
-  </div>
+    </div>
+  </ng-container>
+</div>
 
-  <div style="text-align: center;">
-    * Note: This is <b>NOT</b> an official Google product. Customers will be billed for using cloud resources when deploying a demo. 
-  </div>
-  
+<div style="text-align: center">
+  * Note: This is <b>NOT</b> an official Google product. Customers will be
+  billed for using cloud resources when deploying a demo.
+</div>
