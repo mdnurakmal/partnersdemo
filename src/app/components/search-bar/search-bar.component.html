@@ -1,15 +1,22 @@
 <div class="search-container">
-  <img routerLink="/"src="/assets/images/Demo Factory.svg" class="search-logo">
-  
-    <form class="search-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <img
+    routerLink="/"
+    src="/assets/images/Demo Factory.svg"
+    class="search-logo"
+  />
 
-      <input
-        class="search-input"
-        name="search"
-        ngModel
-        placeholder="Search 100+ partner demos"
-      />
-      <button class="search-button"><i class="fas fa-search"></i></button>
-    </form>
-  </div>
-  
+  <form class="search-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <input
+      class="search-input"
+      name="search"
+      ngModel
+      placeholder="Search 100+ partner demos"
+    />
+    <button class="search-button"><i class="fas fa-search"></i></button>
+  </form>
+
+  <a routerLink="/user/login" class="btn btn-success">Login</a>
+  &nbsp;
+  <a routerLink="/user/register" class="btn btn-primary">Register</a>
+  &nbsp;
+</div>
