@@ -31,3 +31,5 @@ docker build -t gcr.io/partnersdemo/web .
 docker push gcr.io/partnersdemo/web
 
 gcloud run deploy demofactory --image gcr.io/partnersdemo/web --region us-central1 --platform managed --allow-unauthenticated --port 80
+
+COLIN Testing
