@@ -1,27 +1,48 @@
 <div class="container">
   <h1>Login Page</h1>
 
-  <form>
+  <div *ngIf="errormessage" class="text-warning" role="alert">
+    <strong>{{ errormessage }}</strong>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <label for="email">Email address</label>
       <input
+        formControlName="email"
         type="email"
         class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
+        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
       />
       <div id="emailHelp" class="form-text">
         We'll never share your email with anyone else.
       </div>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">
+          Email must be a valid email address
+        </div>
+      </div>
     </div>
 
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" />
+      <label for="password">Password</label>
+      <input
+        formControlName="password"
+        type="password"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+      />
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">
+          Password must be at least 6 characters
+        </div>
+      </div>
     </div>
-
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
+
   &nbsp;
   <h3>Do not have account yet?</h3>
   &nbsp;

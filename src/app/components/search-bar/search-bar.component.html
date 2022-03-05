@@ -15,8 +15,20 @@
     <button class="search-button"><i class="fas fa-search"></i></button>
   </form>
 
-  <a routerLink="/user/login" class="btn btn-success">Login</a>
+  <a
+    *ngIf="authService.isLoggedIn$; else"
+    routerLink="/user/login"
+    class="btn btn-success"
+    >Login</a
+  >
   &nbsp;
-  <a routerLink="/user/register" class="btn btn-primary">Register</a>
+  <a
+    *ngIf="authService.isLoggedIn$; else"
+    routerLink="/user/register"
+    class="btn btn-primary"
+    >Register</a
+  >
+  &nbsp;
+  <a *ngIf="authService.isLoggedIn$" class="btn btn-secondary">Logout</a>
   &nbsp;
 </div>
