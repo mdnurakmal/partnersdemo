@@ -16,19 +16,25 @@
   </form>
 
   <a
-    *ngIf="authService.isLoggedIn$; else"
+    *ngIf="!authService.loggedIn()"
     routerLink="/user/login"
     class="btn btn-success"
     >Login</a
   >
   &nbsp;
   <a
-    *ngIf="authService.isLoggedIn$; else"
+    *ngIf="!authService.loggedIn()"
     routerLink="/user/register"
     class="btn btn-primary"
     >Register</a
   >
   &nbsp;
-  <a *ngIf="authService.isLoggedIn$" class="btn btn-secondary">Logout</a>
+  <a
+    *ngIf="authService.loggedIn()"
+    style="cursor: pointer"
+    class="btn btn-secondary"
+    (click)="authService.logoutUser()"
+    >Logout</a
+  >
   &nbsp;
 </div>
