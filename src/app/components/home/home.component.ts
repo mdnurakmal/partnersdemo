@@ -24,7 +24,7 @@ import { ControllerService } from '../../controller.service';
           ])
         )
       ]),
- 
+
     ])
   ]
 })
@@ -60,8 +60,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     screenshots: [],
     partners:"softserve",
     solution_pillar: "Smart Analytics",
-    liveDemo: "https://ui-b3lhcxttdq-ey.a.run.app/",
-    deployDemo:"https://ui-b3lhcxttdq-ey.a.run.app/"
+    liveDemo: "https://ui-uc4rkdapoq-ey.a.run.app/",
+    deployDemo:"https://ui-uc4rkdapoq-ey.a.run.app/"
    }
 
    demo3: Demo ={
@@ -81,21 +81,21 @@ export class HomeComponent implements OnInit, OnDestroy {
 
    demo4: Demo ={
 
-    name: "Demo 4",
+    name: "Data Pipe",
     website: "string",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    brief_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    description:"Data Pipes is a DataOps and insights generation platform to help analytics and IT teams to catalog, manage, and democratize their data by automating data practices.",
+    brief_desc: "Data Pipes is a DataOps",
     parent_platforms: [],
     publishers:[],
     screenshots: [],
-    partners:"demo",
+    partners:"cloudcover",
     solution_pillar: "Smart Analytics",
-    liveDemo: "https://www.lipsum.com/",
-    deployDemo:"https://www.lipsum.com/"
+    liveDemo: "https://drive.google.com/file/d/1fhWcl9ZDCcgqHqvFMIW-bgRvtoEe564t/view",
+    deployDemo:"https://drive.google.com/file/d/1fhWcl9ZDCcgqHqvFMIW-bgRvtoEe564t/view"
    }
 
    demo5: Demo ={
-  
+
     name: "Demo 5",
     website: "string",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet pretium urna. Nullam quis elit odio. Cras rhoncus enim mi, quis aliquet metus euismod nec. Nulla vel tempus elit, at aliquet magna. Aliquam iaculis nibh in dictum fermentum. Vestibulum eu accumsan diam, vel sagittis est. Sed facilisis cursus nulla non ultricies. In sit amet tempus leo. Proin condimentum leo non eros semper euismod luctus id orci. Fusce non metus sodales, rhoncus nibh sit amet, dapibus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in consectetur tortor, vitae venenatis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -153,11 +153,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     liveDemo: "https://www.lipsum.com/",
     deployDemo:"https://www.lipsum.com/"
    }
-   
+
    demoDB: Demo[] = [this.demo1,this.demo2,this.demo3,this.demo4,this.demo5,this.demo6,this.demo7,this.demo8];
 
 
-  constructor(    
+  constructor(
 
     private router: Router,
     private activatedRoute: ActivatedRoute, private conService:ControllerService) { }
@@ -168,7 +168,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         //this.searchGames('metacrit');
         this.games = this.demoDB;
-      
+
     });
 
     this.subscription = this.conService.getemitSolutionPillarFilter()

@@ -20,14 +20,14 @@ export class ApiserviceService {
 
   // private decodedToken
 
-  constructor(private _http:HttpClient) { 
+  constructor(private _http:HttpClient) {
     // const token = localStorage.getItem('auth_token')
     // this._isLoggedIn$.next(!!token)
   }
 
   //connect frontend to backend
 
-  apiUrl = 'https://mysql-cloud-run-7teekrs4qq-uc.a.run.app'
+  apiUrl = 'https://mysql-cloud-run-uc4rkdapoq-uc.a.run.app'
 
 
   //register user

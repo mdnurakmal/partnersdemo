@@ -11,6 +11,8 @@ CLOUD_RUN_SERVICE=angular-cloud-run # NAME OF YOUR CLOUD RUN SERVICE
 #   --member="serviceAccount:SERVICE_ACCOUNT_EMAIL" \
 #   --role="roles/cloudsql.client"
 
+#front_end API: https://angular-cloud-run-uc4rkdapoq-uc.a.run.app
+
 gcloud builds submit -t gcr.io/$GOOGLE_PROJECT_ID/$CLOUD_RUN_SERVICE .
 
 
